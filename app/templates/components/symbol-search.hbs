@@ -1,0 +1,21 @@
+<div class="c-symbol-search">
+    <div class="c-symbol-search__field">
+        <label class="c-symbol-search__label" for="{{concat elementId '-name'}}">Ticker Symbol</label>
+        {{input value=value input=(action 'onSearchEntry') id=(concat elementId '-name') class="c-symbol-search__input" placeholder="ex. AAPL"}}
+    </div>
+    {{#if this.assisting}}
+    <div class="c-symbol-search__results">
+        {{#if this.searching}}
+        <div class="c-symbol-search__status"><div class="c-banner">Searching...</div></div>
+        {{else if this.results}}
+        <ul class="c-symbol-search__items">
+            {{#each this.results as |stock|}}
+            <li class="c-symbol-search__item" {{action "onSelectHint" stock}}>{{stock.symbol}} - {{stock.name}}</li>
+            {{/each}}
+        </ul>
+        {{else}}
+        <div class="c-symbol-search__status"><div class="c-banner">No results</div></div>
+        {{/if}}
+    </div>
+    {{/if}}
+</div>

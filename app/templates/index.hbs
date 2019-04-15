@@ -1,0 +1,34 @@
+<div class="l-zoom-reveal {{if this.stock "is-revealed" }}">
+    <section class="c-section h-center">
+        <SymbolSearch @onSelectionChange={{action "stockChanged"}} />
+    </section>
+    <section class="c-section">
+        <div class="c-card">
+            <hgroup class="c-card__header">
+            {{# if this.stock}}
+                <StockHeader @stock={{this.stock}} />
+            {{else}}
+            <div class="c-stock-header">
+                <h1>&#9644;&#9644;&#9644;&#9644;</h1>
+                <h2>&#8213;&#8213;&#8213;&#8213;&#8213;&#8213;&#8213;</h2>
+                <dl class="c-stock-header__stats">
+                    <dt class="c-stock-header__stat">Exchange</dt>
+                    <dd class="c-stock-header__val">&#8213;&#8213;&#8213;&#8213;</dd>
+                    <dt class="c-stock-header__stat">Price (&#8213;)</dt>
+                    <dd class="c-stock-header__val">&#8213;.&#8213;&#8213;</dd>
+                </dl>
+            </div>
+            {{/if}}
+            </hgroup>
+            <div class="c-card__content">
+            {{# if this.stock}}
+                <StockReport @stock={{this.stock}} />
+            {{else}}
+                <div class="c-banner">
+                    &#8213;&#8213;&#8213;&#8213;&#8213;&#8213;&#8213;
+                </div>
+            {{/if}}
+            </div>
+        </div>
+    </section>
+</div>

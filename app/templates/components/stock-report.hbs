@@ -1,0 +1,17 @@
+{{#if this.shouldbuy}}
+<div class="c-banner c-banner--success">
+    One share of {{this.stock.symbol}} is currently worth ${{this.todaysPrice}}. That's {{this.priceDiff}} MORE than yesterday. We recommend BUYING.
+</div>
+{{else if this.shouldSell}}
+<div class="c-banner c-banner--danger">
+    One share of {{this.stock.symbol}} is currently worth ${{this.todaysPrice}}. That's {{this.priceDiff}} LESS than yesterday. We recommend SELLING.
+</div>
+{{else}}
+<div class="c-banner">
+    One share of {{this.stock.symbol}} is currently worth ${{this.todaysPrice}}. That's the SAME as yesterday's. We recommend HOLDING.
+</div>
+{{/if}}
+
+{{#if this.history}}
+<StockChart @stock={{this.stock}} @data={{this.history}} />
+{{/if}}
