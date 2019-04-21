@@ -2,9 +2,10 @@ import Application from '@ember/application';
 import Resolver from './resolver';
 import loadInitializers from 'ember-load-initializers';
 import config from './config/environment';
+import LinkComponent from '@ember/routing/link-component';
 
-Ember.LinkComponent.reopen({
-	activeClass: 'is-active'
+LinkComponent.reopen({
+  activeClass: 'is-active'
 });
 
 const App = Application.extend({

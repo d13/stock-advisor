@@ -1,7 +1,7 @@
 import Service from '@ember/service';
 import moment from 'moment';
 
-/* global HighCharts */
+/* global Highcharts */
 export default Service.extend({
     createLineChart(element, data, symbol, title) {
         if (!element || !data) {
