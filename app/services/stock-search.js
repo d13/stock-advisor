@@ -1,5 +1,4 @@
 import Service from '@ember/service';
-import ENV from '../config/environment';
 import moment from 'moment';
 import $ from 'jquery';
 
@@ -21,12 +20,10 @@ import $ from 'jquery';
 
 export default Service.extend({
     _makeRequest(endpoint, props) {
-        const params = Object.assign({}, props, {
-            api_token: ENV.apiKey
-        });
+        const params = Object.assign({}, props, { endpoint });
 
         const qs = Object.keys(params).map((val, i) => `${i === 0 ? '?' : '&'}${val}=${params[val]}`).join('');
-        return $.getJSON(`https://www.worldtradingdata.com/api/v1/${endpoint}${qs}`);
+        return $.getJSON(`http://keithdaulton.com/stocks.php${qs}`);
     },
     findStocksBySymbol(symbol) {
         //return $.Deferred().resolve({"message":"Your account has a max limit of 5. Upgrade your account to your limit.","total_returned":5,"total_results":309,"total_pages":62,"limit":5,"page":1,"data":[{"symbol":"1DAA.F","name":"Digital Ally, Inc.","currency":"EUR","price":"3.77","stock_exchange_long":"Frankfurt Stock Exchange","stock_exchange_short":"FRA"},{"symbol":"2AAP.L","name":"LEV/ETP 2X APPLE 20670403","currency":"GBX","price":"1204.50","stock_exchange_long":"London Stock Exchange","stock_exchange_short":"LSE"},{"symbol":"3CAA.F","name":"China Automation Group Limited","currency":"EUR","price":"0.08","stock_exchange_long":"Frankfurt Stock Exchange","stock_exchange_short":"FRA"},{"symbol":"55AA.F","name":"THAI NVDR COMPA/NVDR","currency":"EUR","price":"0.11","stock_exchange_long":"Frankfurt Stock Exchange","stock_exchange_short":"FRA"},{"symbol":"5AA.F","name":"Wijaya Karya (Persero) Tbk PT","currency":"EUR","price":"0.12","stock_exchange_long":"Frankfurt Stock Exchange","stock_exchange_short":"FRA"}]})
